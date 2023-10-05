@@ -16,10 +16,15 @@ namespace BLL
         {
             _res = res;
         }
-
         public MovieModel getbyID(int id)
         {
             return _res.GetbyID(id);
         }
+
+        public bool Create(MovieModel model)
+        {
+            return _res.Create(model);
+        }
+
     }
 }

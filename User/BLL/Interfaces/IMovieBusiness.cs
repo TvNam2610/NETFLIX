@@ -10,5 +10,6 @@ namespace BLL.Interfaces
     public interface IMovieBusiness
     {
         MovieModel getbyID(int id);
+        bool Create(MovieModel model);
     }
 }

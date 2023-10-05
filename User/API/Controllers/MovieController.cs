@@ -21,5 +21,13 @@ namespace API.Controllers
             var dt = _movieBusiness.getbyID(id);
             return dt;
         }
+
+        [Route("create-movie")]
+        [HttpPost]
+        public MovieModel CreateItem([FromBody] MovieModel model)
+        {
+            _movieBusiness.Create(model);
+            return model;
+        }
     }
 }

@@ -10,5 +10,8 @@ namespace DAL.Interfaces
     public interface IMovieRespository
     {
         MovieModel GetbyID(int id);
+
+        bool Create(MovieModel model);
+        
     }
 }
