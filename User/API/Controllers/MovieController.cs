@@ -29,5 +29,21 @@ namespace API.Controllers
             _movieBusiness.Create(model);
             return model;
         }
+
+        [Route("update-movie")]
+        [HttpPost]
+        public MovieModel UpdateItem([FromBody] MovieModel model)
+        {
+            _movieBusiness.Update(model);
+            return model;
+        }
+
+        [Route("delete-movie")]
+        [HttpDelete]
+        public IActionResult DeleteItem(int id)
+        {
+            _movieBusiness.Delete(id);
+            return Ok(new { message = "xoas thanh cong" });
+        }
     }
 }

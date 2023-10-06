@@ -12,6 +12,10 @@ namespace DAL.Interfaces
         MovieModel GetbyID(int id);
 
         bool Create(MovieModel model);
+
+        bool Update(MovieModel model);
+
+        bool Delete(int id);
         
     }
 }

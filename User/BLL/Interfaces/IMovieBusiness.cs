@@ -11,5 +11,9 @@ namespace BLL.Interfaces
     {
         MovieModel getbyID(int id);
         bool Create(MovieModel model);
+
+        bool Update(MovieModel model);
+
+        bool Delete(int id);
     }
 }

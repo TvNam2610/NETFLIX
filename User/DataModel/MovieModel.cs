@@ -16,6 +16,8 @@ namespace DataModel
         public string VideoURL { get; set; }
         public int Duration { get; set; }
         public int AgeRecommend { get; set; }
+        public string MovieNameURL { get; set; }
+        public string TrailerURL { get; set; }
         public string Genre { get; set; }
         public List<MovieActorsModel> list_json_MovieActors { get; set; }
         public List<MovieDirectors> list_json_MovieDirectors { get; set; }

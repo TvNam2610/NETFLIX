@@ -4,6 +4,7 @@ using DataModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -48,9 +49,65 @@ namespace DAL
                 "@videoURL", model.VideoURL,
                 "@duration", model.Duration,
                 "@ageRecommend", model.AgeRecommend,
+                "@movieNameURL", model.MovieNameURL,
+                "@trailerURL", model.TrailerURL,
                 "@genre", model.Genre,
                 "@list_json_MovieActors", model.list_json_MovieActors != null ? MessageConvert.SerializeObject(model.list_json_MovieActors) : null,
                 "@list_json_MovieDirectors", model.list_json_MovieDirectors != null ? MessageConvert.SerializeObject(model.@list_json_MovieDirectors) : null);
+                if ((result != null && !string.IsNullOrEmpty(result.ToString())) || !string.IsNullOrEmpty(msgError))
+                {
+                    throw new Exception(Convert.ToString(result) + msgError);
+                }
+                return true;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        public bool Update(MovieModel model)
+        {
+            string msgError = "";
+            try
+            {
+                var result = _db.ExecuteScalarSProcedureWithTransaction(
+                    out msgError,
+                    "sp_movie_update",
+                "@movieID", model.MovieID,
+                "@title", model.Title,
+                "@releaseDate", model.ReleaseDate,
+                "@description", model.Description,
+                "@coverImageURL", model.CoverImageURL,
+                "@videoURL", model.VideoURL,
+                "@duration", model.Duration,
+                "@ageRecommend", model.AgeRecommend,
+                "@movieNameURL", model.MovieNameURL,
+                "@trailerURL", model.TrailerURL,
+                "@genre", model.Genre,
+                "@list_json_MovieActors", model.list_json_MovieActors != null ? MessageConvert.SerializeObject(model.list_json_MovieActors) : null,
+                "@list_json_MovieDirectors", model.list_json_MovieDirectors != null ? MessageConvert.SerializeObject(model.@list_json_MovieDirectors) : null);
+                if ((result != null && !string.IsNullOrEmpty(result.ToString())) || !string.IsNullOrEmpty(msgError))
+                {
+                    throw new Exception(Convert.ToString(result) + msgError);
+                }
+                return true;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        public bool Delete(int id)
+        {
+            string msgError = "";
+            try
+            {
+                var result = _db.ExecuteScalarSProcedureWithTransaction(
+                    out msgError,
+                    "sp_movie_delete", "@movieID", id);
+               
                 if ((result != null && !string.IsNullOrEmpty(result.ToString())) || !string.IsNullOrEmpty(msgError))
                 {
                     throw new Exception(Convert.ToString(result) + msgError);
