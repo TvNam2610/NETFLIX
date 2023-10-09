@@ -24,11 +24,9 @@ builder.Services.AddTransient<IMovieRespository, MovieRespository>();
 builder.Services.AddTransient<IMovieBusiness, MovieBusiness>();
 builder.Services.AddTransient<IGenreRepository, GenreRepository>();
 builder.Services.AddTransient<IGenreBusiness, GenreBusiness>();
+builder.Services.AddTransient<IWatchHistoryRepository, WatchHistoryRepository>();
+builder.Services.AddTransient<IWatchHistoryBusiness, WatchHistoryBusiness>();
 
-/*builder.Services.AddTransient<ICategoryRepository, CategoryRepository>();
-builder.Services.AddTransient<ICategoryBusiness, CategoryBusiness>();
-builder.Services.AddTransient<INotificationRepository, NotificationRepository>();
-builder.Services.AddTransient<INotificationBusiness, NotificationBusiness>();*/
 
 
 
