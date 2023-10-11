@@ -45,5 +45,35 @@ namespace API.Controllers
             _movieBusiness.Delete(id);
             return Ok(new { message = "xoas thanh cong" });
         }
+
+        [Route("search")]
+        [HttpPost]
+        public IActionResult Search([FromBody] Dictionary<string, object> formData)
+        {
+            try
+            {
+                var page = int.Parse(formData["page"].ToString());
+                var pageSize = int.Parse(formData["pageSize"].ToString());
+                string ten_phim = "";
+                if (formData.Keys.Contains("ten_phim") && !string.IsNullOrEmpty(Convert.ToString(formData["ten_phim"]))) { ten_phim = Convert.ToString(formData["ten_phim"]); }
+                string the_loai = "";
+                if (formData.Keys.Contains("the_loai") && !string.IsNullOrEmpty(Convert.ToString(formData["the_loai"]))) { the_loai = Convert.ToString(formData["the_loai"]); }
+                long total = 0;
+                var data = _movieBusiness.Search(page, pageSize, out total, ten_phim, the_loai);
+                return Ok(
+                    new
+                    {
+                        TotalItems = total,
+                        Data = data,
+                        Page = page,
+                        PageSize = pageSize
+                    }
+                    );
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
     }
 }

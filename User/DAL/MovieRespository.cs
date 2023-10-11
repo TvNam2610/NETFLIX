@@ -119,5 +119,27 @@ namespace DAL
                 throw ex;
             }
         }
+
+        public List<MovieModel> Search(int pageIndex, int pageSize, out long total, string ten_phim, string the_loai)
+        {
+            string msgError = "";
+            total = 0;
+            try
+            {
+                var dt = _db.ExecuteSProcedureReturnDataTable(out msgError, "sp_movie_search",
+                    "@page_index", pageIndex,
+                    "@page_size", pageSize,
+                    "@title ", ten_phim ,
+                    "@genre", the_loai);
+                if (!string.IsNullOrEmpty(msgError))
+                    throw new Exception(msgError);
+                if (dt.Rows.Count > 0) total = (long)dt.Rows[0]["RecordCount"];
+                return dt.ConvertTo<MovieModel>().ToList();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
     }
 }

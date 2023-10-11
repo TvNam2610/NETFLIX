@@ -6,12 +6,11 @@ using System.Threading.Tasks;
 
 namespace DataModel
 {
-    public class WatchHistoryModel
+    public class UserFavoriteModel
     {
-        public int HistoryID { get; set; }
+        public int FavoriteID { get; set; }
         public string Username { get; set; }
         public string Title { get; set; }
-        public DateTime WatchDate { get; set; }
 
     }
 }

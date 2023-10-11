@@ -35,5 +35,10 @@ namespace BLL
         {
             return _res.Delete(id);
         }
+
+        public List<MovieModel> Search(int pageIndex, int pageSize, out long total, string ten_phim, string the_loai)
+        {
+            return _res.Search(pageIndex,pageSize, out total, ten_phim, the_loai);
+        }
     }
 }

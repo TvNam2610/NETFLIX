@@ -16,6 +16,8 @@ namespace DAL.Interfaces
         bool Update(MovieModel model);
 
         bool Delete(int id);
-        
+
+        public List<MovieModel> Search(int pageIndex, int pageSize, out long total, string ten_phim, string the_loai);
+
     }
 }
