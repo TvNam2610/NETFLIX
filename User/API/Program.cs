@@ -28,6 +28,8 @@ builder.Services.AddTransient<IWatchHistoryRepository, WatchHistoryRepository>()
 builder.Services.AddTransient<IWatchHistoryBusiness, WatchHistoryBusiness>();
 builder.Services.AddTransient<IUserFavoriteRepository, UserFavoriteRepository>();
 builder.Services.AddTransient<IUserFavoriteBusiness, UserFavoriteBusiness>();
+builder.Services.AddTransient<IEpisodeRepository, EpisodeRepository>();
+builder.Services.AddTransient<IEpisodeBusiness, EpisodeBusiness>();
 
 
 

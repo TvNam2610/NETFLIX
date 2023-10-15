@@ -21,7 +21,6 @@ namespace DataModel
         public string Genre { get; set; }
         public List<MovieActorsModel> list_json_MovieActors { get; set; }
         public List<MovieDirectors> list_json_MovieDirectors { get; set; }
-
     }
    
 
