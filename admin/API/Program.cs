@@ -18,10 +18,8 @@ builder.Services.AddCors(options =>
 
 // Add services to the container.
 builder.Services.AddTransient<IDatabaseHelper, DatabaseHelper>();
-
 builder.Services.AddTransient<IMovieRespository, MovieRespository>();
 builder.Services.AddTransient<IMovieBusiness, MovieBusiness>();
-
 builder.Services.AddTransient<IWatchHistoryRepository, WatchHistoryRepository>();
 builder.Services.AddTransient<IWatchHistoryBusiness, WatchHistoryBusiness>();
 builder.Services.AddTransient<IUserFavoriteRepository, UserFavoriteRepository>();

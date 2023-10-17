@@ -29,6 +29,13 @@ namespace API.Controllers
             return dt;
         }
 
+        [HttpGet("get-popular")]
+        public List<MovieModel> GetPopular()
+        {
+            var dt = _movieBusiness.GetPopularMovies();
+            return dt;
+        }
+
         [Route("search")]
         [HttpPost]
         public IActionResult Search([FromBody] Dictionary<string, object> formData)

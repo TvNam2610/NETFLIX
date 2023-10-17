@@ -73,5 +73,21 @@ namespace DAL
                 throw ex;
             }
         }
+        public List<MovieModel> GetPopularMovies()
+        {
+            string msgError = "";
+            try
+            {
+                var dt = _db.ExecuteSProcedureReturnDataTable(out msgError, "sp_get_popular_movies");
+
+                if (!string.IsNullOrEmpty(msgError))
+                    throw new Exception(msgError);
+                return dt.ConvertTo<MovieModel>().ToList();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
     }
 }

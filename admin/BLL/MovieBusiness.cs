@@ -25,6 +25,10 @@ namespace BLL
             return _res.GetbyID(id);
         }
 
+        public List<MovieModel> GetPopularMovies()
+        {
+            return _res.GetPopularMovies();
+        }
 
         public List<MovieModel> Search(int pageIndex, int pageSize, out long total, string ten_phim, string the_loai)
         {
