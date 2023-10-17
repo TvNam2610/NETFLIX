@@ -26,8 +26,8 @@ builder.Services.AddTransient<IUserFavoriteRepository, UserFavoriteRepository>()
 builder.Services.AddTransient<IUserFavoriteBusiness, UserFavoriteBusiness>();
 builder.Services.AddTransient<IEpisodeRepository, EpisodeRepository>();
 builder.Services.AddTransient<IEpisodeBusiness, EpisodeBusiness>();
-
-
+builder.Services.AddTransient<IGenreRepository, GenreRepository>();
+builder.Services.AddTransient<IGenreBusiness, GenreBusiness>();
 
 
 // configure strongly typed settings objects
