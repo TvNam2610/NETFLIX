@@ -52,6 +52,7 @@ namespace DAL
                 "@movieNameURL", model.MovieNameURL,
                 "@trailerURL", model.TrailerURL,
                 "@genre", model.Genre,
+                "@viewCount",model.ViewCount,
                 "@list_json_MovieActors", model.list_json_MovieActors != null ? MessageConvert.SerializeObject(model.list_json_MovieActors) : null,
                 "@list_json_MovieDirectors", model.list_json_MovieDirectors != null ? MessageConvert.SerializeObject(model.@list_json_MovieDirectors) : null);
                 if ((result != null && !string.IsNullOrEmpty(result.ToString())) || !string.IsNullOrEmpty(msgError))
@@ -85,6 +86,7 @@ namespace DAL
                 "@movieNameURL", model.MovieNameURL,
                 "@trailerURL", model.TrailerURL,
                 "@genre", model.Genre,
+                "@viewCount",model.ViewCount,
                 "@list_json_MovieActors", model.list_json_MovieActors != null ? MessageConvert.SerializeObject(model.list_json_MovieActors) : null,
                 "@list_json_MovieDirectors", model.list_json_MovieDirectors != null ? MessageConvert.SerializeObject(model.@list_json_MovieDirectors) : null);
                 if ((result != null && !string.IsNullOrEmpty(result.ToString())) || !string.IsNullOrEmpty(msgError))
@@ -134,6 +136,23 @@ namespace DAL
                 if (!string.IsNullOrEmpty(msgError))
                     throw new Exception(msgError);
                 if (dt.Rows.Count > 0) total = (long)dt.Rows[0]["RecordCount"];
+                return dt.ConvertTo<MovieModel>().ToList();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        public List<MovieModel> GetAll()
+        {
+            string msgError = "";
+            try
+            {
+                var dt = _db.ExecuteSProcedureReturnDataTable(out msgError, "sp_getAll_movies" );
+                   
+                if (!string.IsNullOrEmpty(msgError))
+                    throw new Exception(msgError);
                 return dt.ConvertTo<MovieModel>().ToList();
             }
             catch (Exception ex)

@@ -9,6 +9,7 @@ namespace DAL.Interfaces
 {
     public interface IMovieRespository
     {
+        List<MovieModel> GetAll();
         MovieModel GetbyID(int id);
 
         bool Create(MovieModel model);

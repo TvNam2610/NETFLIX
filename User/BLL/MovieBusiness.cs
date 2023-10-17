@@ -16,6 +16,10 @@ namespace BLL
         {
             _res = res;
         }
+        public List<MovieModel> getAll()
+        {
+            return _res.GetAll();
+        }
         public MovieModel getbyID(int id)
         {
             return _res.GetbyID(id);

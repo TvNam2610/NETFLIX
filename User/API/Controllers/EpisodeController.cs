@@ -39,7 +39,7 @@ namespace API.Controllers
             return model;
         }
 
-        [Route("delete-movie")]
+        [Route("delete-episode")]
         [HttpDelete]
         public IActionResult DeleteItem(int id)
         {

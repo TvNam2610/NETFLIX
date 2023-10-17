@@ -50,7 +50,8 @@ namespace DAL
                 "@movieNameURL", model.MovieNameURL,
                 "@trailerURL", model.TrailerURL,
                 "@ageRecommend", model.AgeRecommend,
-                "@genre", model.Genre);
+                "@genre", model.Genre,
+                "@viewCount",model.ViewCount);
 
                 if ((result != null && !string.IsNullOrEmpty(result.ToString())) || !string.IsNullOrEmpty(msgError))
                 {
