@@ -17,15 +17,7 @@ namespace BLL
             _res = res;
         }
 
-        public bool Create(EpisodeModel model)
-        {
-            return _res.Create(model);
-        }
-
-        public bool Delete(int id)
-        {
-            return _res.Delete(id);
-        }
+       
 
         public EpisodeModel GetbyID(int id)
         {
@@ -37,9 +29,6 @@ namespace BLL
             return _res.Search(pageIndex, pageSize, out total, ten_phim, the_loai);
         }
 
-        public bool Update(EpisodeModel model)
-        {
-            return _res.Update(model);
-        }
+      
     }
 }

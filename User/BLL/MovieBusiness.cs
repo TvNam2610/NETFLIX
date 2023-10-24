@@ -25,24 +25,14 @@ namespace BLL
             return _res.GetbyID(id);
         }
 
-        public bool Create(MovieModel model)
+        public List<MovieModel> GetPopularMovies()
         {
-            return _res.Create(model);
+            return _res.GetPopularMovies();
         }
 
-        public bool Update(MovieModel model)
+        public List<MovieModel> Search(int pageIndex, int pageSize, out long total, string name)
         {
-            return _res.Update(model);
-        }
-
-        public bool Delete(int id)
-        {
-            return _res.Delete(id);
-        }
-
-        public List<MovieModel> Search(int pageIndex, int pageSize, out long total, string ten_phim, string the_loai)
-        {
-            return _res.Search(pageIndex,pageSize, out total, ten_phim, the_loai);
+            return _res.Search(pageIndex,pageSize, out total, name);
         }
     }
 }

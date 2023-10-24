@@ -18,30 +18,26 @@ builder.Services.AddCors(options =>
 
 // Add services to the container.
 builder.Services.AddTransient<IDatabaseHelper, DatabaseHelper>();
-builder.Services.AddTransient<IUserRepository, UserRepository>();
-builder.Services.AddTransient<IUserBusiness, UserBusiness>();
 builder.Services.AddTransient<IMovieRespository, MovieRespository>();
 builder.Services.AddTransient<IMovieBusiness, MovieBusiness>();
-builder.Services.AddTransient<IGenreRepository, GenreRepository>();
-builder.Services.AddTransient<IGenreBusiness, GenreBusiness>();
 builder.Services.AddTransient<IWatchHistoryRepository, WatchHistoryRepository>();
 builder.Services.AddTransient<IWatchHistoryBusiness, WatchHistoryBusiness>();
 builder.Services.AddTransient<IUserFavoriteRepository, UserFavoriteRepository>();
 builder.Services.AddTransient<IUserFavoriteBusiness, UserFavoriteBusiness>();
 builder.Services.AddTransient<IEpisodeRepository, EpisodeRepository>();
 builder.Services.AddTransient<IEpisodeBusiness, EpisodeBusiness>();
-
-
+builder.Services.AddTransient<IGenreRepository, GenreRepository>();
+builder.Services.AddTransient<IGenreBusiness, GenreBusiness>();
 
 
 // configure strongly typed settings objects
 IConfiguration configuration = builder.Configuration;
 var appSettingsSection = configuration.GetSection("AppSettings");
-builder.Services.Configure<AppSettings>(appSettingsSection);
+
 
 // configure jwt authentication
-var appSettings = appSettingsSection.Get<AppSettings>();
-var key = Encoding.ASCII.GetBytes(appSettings.Secret);
+
+
 builder.Services.AddAuthentication(x =>
 {
     x.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
@@ -54,7 +50,7 @@ builder.Services.AddAuthentication(x =>
     x.TokenValidationParameters = new TokenValidationParameters
     {
         ValidateIssuerSigningKey = true,
-        IssuerSigningKey = new SymmetricSecurityKey(key),
+
         ValidateIssuer = false,
         ValidateAudience = false,
 

@@ -29,28 +29,11 @@ namespace API.Controllers
             return dt;
         }
 
-        [Route("create-movie")]
-        [HttpPost]
-        public MovieModel CreateItem([FromBody] MovieModel model)
+        [HttpGet("get-popular")]
+        public List<MovieModel> GetPopular()
         {
-            _movieBusiness.Create(model);
-            return model;
-        }
-
-        [Route("update-movie")]
-        [HttpPost]
-        public MovieModel UpdateItem([FromBody] MovieModel model)
-        {
-            _movieBusiness.Update(model);
-            return model;
-        }
-
-        [Route("delete-movie")]
-        [HttpDelete]
-        public IActionResult DeleteItem(int id)
-        {
-            _movieBusiness.Delete(id);
-            return Ok(new { message = "xoas thanh cong" });
+            var dt = _movieBusiness.GetPopularMovies();
+            return dt;
         }
 
         [Route("search")]
@@ -61,12 +44,10 @@ namespace API.Controllers
             {
                 var page = int.Parse(formData["page"].ToString());
                 var pageSize = int.Parse(formData["pageSize"].ToString());
-                string ten_phim = "";
-                if (formData.Keys.Contains("ten_phim") && !string.IsNullOrEmpty(Convert.ToString(formData["ten_phim"]))) { ten_phim = Convert.ToString(formData["ten_phim"]); }
-                string the_loai = "";
-                if (formData.Keys.Contains("the_loai") && !string.IsNullOrEmpty(Convert.ToString(formData["the_loai"]))) { the_loai = Convert.ToString(formData["the_loai"]); }
+                string name = "";
+                if (formData.Keys.Contains("name") && !string.IsNullOrEmpty(Convert.ToString(formData["name"]))) { name = Convert.ToString(formData["name"]); }
                 long total = 0;
-                var data = _movieBusiness.Search(page, pageSize, out total, ten_phim, the_loai);
+                var data = _movieBusiness.Search(page, pageSize, out total, name);
                 return Ok(
                     new
                     {

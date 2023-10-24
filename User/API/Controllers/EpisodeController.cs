@@ -23,29 +23,6 @@ namespace API.Controllers
             return dt;
         }
 
-        [Route("create-episode")]
-        [HttpPost]
-        public EpisodeModel CreateItem([FromBody] EpisodeModel model)
-        {
-            _episodeBusiness.Create(model);
-            return model;
-        }
-
-        [Route("update-episode")]
-        [HttpPost]
-        public EpisodeModel UpdateItem([FromBody] EpisodeModel model)
-        {
-            _episodeBusiness.Update(model);
-            return model;
-        }
-
-        [Route("delete-episode")]
-        [HttpDelete]
-        public IActionResult DeleteItem(int id)
-        {
-            _episodeBusiness.Delete(id);
-            return Ok(new { message = "xoas thanh cong" });
-        }
 
         [Route("search")]
         [HttpPost]

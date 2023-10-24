@@ -9,10 +9,6 @@ namespace BLL.Interfaces
 {
     public interface IGenreBusiness
     {
-        List<GenreModel> GetAll();
-        GenreModel GetbyID(int id);
-        bool Create(GenreModel model);
-        bool Update(GenreModel model);
-        bool Delete(int id);
+        List<GenreModel> getAllWithMovie();
     }
 }
