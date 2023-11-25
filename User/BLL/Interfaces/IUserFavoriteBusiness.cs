@@ -9,6 +9,7 @@ namespace BLL.Interfaces
 {
     public interface IUserFavoriteBusiness
     {
-        List<UserFavoriteModel> GetDataByUser(string username);
+        List<MovieModel> GetFavorite(int userID);
+
     }
 }

@@ -12,13 +12,34 @@ namespace BLL
     public class GenreBusiness : IGenreBusiness
     {
         private IGenreRepository _res;
+
         public GenreBusiness(IGenreRepository res)
         {
             _res = res;
         }
-        public List<GenreModel> getAllWithMovie()
+        public bool Create(GenreModel model)
         {
-            return _res.getAllWithMovie();
+            return _res.Create(model);
+        }
+
+        public bool Delete(int id)
+        {
+            return _res.Delete(id);
+        }
+
+        public List<GenreModel> GetAll()
+        {
+            return _res.GetAll();
+        }
+
+        public GenreModel GetbyID(int id)
+        {
+            return _res.GetbyID(id);
+        }
+
+        public bool Update(GenreModel model)
+        {
+            return _res.Update(model);
         }
     }
 }

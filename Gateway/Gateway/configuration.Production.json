@@ -1,21 +1,21 @@
-{
+﻿{
   "Routes": [
     {
-      "DownstreamPathTemplate": "/api/User/{everything}",
-      "DownstreamScheme": "https",
+      "DownstreamPathTemplate": "/api/hoadon",
+      "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
           "Host": "localhost",
-          "Port": 7148
+          "Port": 36569
         }
       ],
-      "UpstreamPathTemplate": "/api-admin/user-ab/{everything}",
-      "UpstreamHttpMethod": [ "GET", "POST", "PUT" ]
+      "UpstreamPathTemplate": "/hoadon",
+      "UpstreamHttpMethod": [ "GET", "POST", "PUT" ],
       //"AuthenticationOptions": {
       //  "AuthenticationProviderKey": "Bearer",
       //  "AllowedScopes": []
       //}
-    }
+    },
     //{
     //  "DownstreamPathTemplate": "/api/catalog/{id}",
     //  "DownstreamScheme": "http",

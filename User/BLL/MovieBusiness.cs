@@ -34,5 +34,10 @@ namespace BLL
         {
             return _res.Search(pageIndex,pageSize, out total, name);
         }
+
+        public List<MovieModel> GetSimilarMovies(int id)
+        {
+            return _res.GetSimilarMovies(id);
+        }
     }
 }

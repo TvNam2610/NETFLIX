@@ -1,4 +1,7 @@
 {
+  "GlobalConfiguration": {
+    "BaseUrl": "https://localhost:5000"
+  },
   "Routes": [
     {
       "DownstreamPathTemplate": "/api/User/{everything}",
@@ -9,13 +12,12 @@
           "Port": 7148
         }
       ],
-      "UpstreamPathTemplate": "/api-admin/user-ab/{everything}",
+      "UpstreamPathTemplate": "/api-admin/user/{everything}",
       "UpstreamHttpMethod": [ "GET", "POST", "PUT" ]
-      //"AuthenticationOptions": {
-      //  "AuthenticationProviderKey": "Bearer",
-      //  "AllowedScopes": []
-      //}
     }
+
+
+
     //{
     //  "DownstreamPathTemplate": "/api/catalog/{id}",
     //  "DownstreamScheme": "http",
@@ -56,8 +58,5 @@
     //  "UpstreamPathTemplate": "/identity/validate",
     //  "UpstreamHttpMethod": [ "GET" ]
     //}
-  ],
-  "GlobalConfiguration": {
-    "BaseUrl": "http://localhost:18073"
-  }
+  ]
 }

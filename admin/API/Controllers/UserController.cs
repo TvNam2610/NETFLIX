@@ -30,18 +30,12 @@ namespace API.Controllers
         [HttpGet("get-all")]
         public IActionResult GetAll()
         {
-            var dt = _accBusiness.GetAll().Select(x => new { x.UserID, x.Username ,x.Password });
+            var dt = _accBusiness.GetAll();
             return Ok(dt);
         }
 
 
-        [HttpGet("get-by-id")]
-        public UserModel GetDataById( string id )
-        {
-            var dt = _accBusiness.GetDataById(id);
-            return dt;
-        }
-
+      
 
         [AllowAnonymous]
         [HttpPost("create-user")]

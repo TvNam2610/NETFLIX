@@ -9,6 +9,6 @@ namespace DAL.Interfaces
 {
     public interface IUserFavoriteRepository
     {
-        List<UserFavoriteModel> GetDataByUser(string username);
+        List<MovieModel> GetDataByUser(int userID);
     }
 }

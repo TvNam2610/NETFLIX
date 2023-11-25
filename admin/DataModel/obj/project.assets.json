@@ -13,11 +13,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "F:\\ASP.Net\\NETFLIX\\admin\\DataModel\\DataModel.csproj",
+      "projectUniqueName": "F:\\ASP.Net\\NETFLIX\\Admin\\DataModel\\DataModel.csproj",
       "projectName": "DataModel",
-      "projectPath": "F:\\ASP.Net\\NETFLIX\\admin\\DataModel\\DataModel.csproj",
+      "projectPath": "F:\\ASP.Net\\NETFLIX\\Admin\\DataModel\\DataModel.csproj",
       "packagesPath": "C:\\Users\\admin\\.nuget\\packages\\",
-      "outputPath": "F:\\ASP.Net\\NETFLIX\\admin\\DataModel\\obj\\",
+      "outputPath": "F:\\ASP.Net\\NETFLIX\\Admin\\DataModel\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\admin\\AppData\\Roaming\\NuGet\\NuGet.Config",

@@ -21,5 +21,10 @@ namespace BLL
         {
             return _res.GetDataByUser(username);
         }
+        public List<WatchHistoryModel> ThongKe(int pageIndex, int pageSize, out long total, string ten_nguoi_xem, DateTime? frNgayXem, DateTime? toNgayXem)
+        {
+            return _res.ThongKe(pageIndex, pageSize, out total, ten_nguoi_xem, frNgayXem, toNgayXem);
+        }
+
     }
 }

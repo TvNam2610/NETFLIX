@@ -33,5 +33,28 @@ namespace DAL
                 throw ex;
             }
         }
+
+        public List<WatchHistoryModel> ThongKe(int pageIndex, int pageSize, out long total, string ten_nguoi_xem, DateTime? frNgayXem, DateTime? toNgayXem)
+        {
+            string msgError = "";
+            total = 0;
+            try
+            {
+                var dt = _db.ExecuteSProcedureReturnDataTable(out msgError, "sp_thong_ke_xem_phim",
+                    "@page_index", pageIndex,
+                    "@page_size", pageSize,
+                    "@ten_nguoi_xem",ten_nguoi_xem,
+                    "@fr_NgayXem",frNgayXem,
+                    "@to_NgayXem",toNgayXem);
+                if (!string.IsNullOrEmpty(msgError))
+                    throw new Exception(msgError);
+                if (dt.Rows.Count > 0) total = (long)dt.Rows[0]["RecordCount"];
+                return dt.ConvertTo<WatchHistoryModel>().ToList();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
     }
 }

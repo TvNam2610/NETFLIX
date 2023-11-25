@@ -35,6 +35,12 @@ namespace API.Controllers
             var dt = _movieBusiness.GetPopularMovies();
             return dt;
         }
+        [HttpGet("get-similar")]
+        public List<MovieModel> Similar(int id)
+        {
+            var dt = _movieBusiness.GetSimilarMovies(id);
+            return dt;
+        }
 
         [Route("search")]
         [HttpPost]
@@ -58,7 +64,7 @@ namespace API.Controllers
                     }
                     );
             }
-            catch (Exception ex)
+            catch (Exception ex)    
             {
                 throw new Exception(ex.Message);
             }

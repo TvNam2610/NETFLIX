@@ -11,8 +11,14 @@ namespace BLL.Interfaces
     {
         EpisodeModel GetbyID(int id);
 
-       
+        bool Create(EpisodeModel model);
 
-        public List<EpisodeModel> Search(int pageIndex, int pageSize, out long total, string ten_phim, string the_loai);
+        bool Update(EpisodeModel model);
+
+        bool Delete(int id);
+        bool AddMovieForEpisode(AddMovieRequestDto model);
+        bool UpdateMovieForEpisode(MovieDto model);
+
+        public List<EpisodeModel> Search(int pageIndex, int pageSize, out long total, string name);
     }
 }

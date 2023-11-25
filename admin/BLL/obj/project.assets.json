@@ -1928,7 +1928,7 @@
       "projectName": "BLL",
       "projectPath": "F:\\ASP.Net\\NETFLIX\\admin\\BLL\\BLL.csproj",
       "packagesPath": "C:\\Users\\admin\\.nuget\\packages\\",
-      "outputPath": "F:\\ASP.Net\\NETFLIX\\admin\\BLL\\obj\\",
+      "outputPath": "F:\\ASP.Net\\NETFLIX\\Admin\\BLL\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\admin\\AppData\\Roaming\\NuGet\\NuGet.Config",

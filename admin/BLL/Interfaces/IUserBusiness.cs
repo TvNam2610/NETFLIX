@@ -12,7 +12,6 @@ namespace BLL.Interfaces
         List<UserModel> GetAll();
 
         UserModel Login(string username, string password);
-        UserModel GetDataById(string id);
 
         bool Create(UserModel model);
 

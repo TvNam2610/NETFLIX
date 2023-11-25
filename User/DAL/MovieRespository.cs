@@ -34,7 +34,7 @@ namespace DAL
             }
         }
 
-
+        
         public List<MovieModel> Search(int pageIndex, int pageSize, out long total, string name)
         {
             string msgError = "";
@@ -61,7 +61,7 @@ namespace DAL
             string msgError = "";
             try
             {
-                var dt = _db.ExecuteSProcedureReturnDataTable(out msgError, "sp_getAll_movies" );
+                var dt = _db.ExecuteSProcedureReturnDataTable(out msgError, "sp_getAll_movies");
                    
                 if (!string.IsNullOrEmpty(msgError))
                     throw new Exception(msgError);
@@ -78,6 +78,23 @@ namespace DAL
             try
             {
                 var dt = _db.ExecuteSProcedureReturnDataTable(out msgError, "sp_get_popular_movies");
+
+                if (!string.IsNullOrEmpty(msgError))
+                    throw new Exception(msgError);
+                return dt.ConvertTo<MovieModel>().ToList();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        public List<MovieModel> GetSimilarMovies(int id)
+        {
+            string msgError = "";
+            try
+            {
+                var dt = _db.ExecuteSProcedureReturnDataTable(out msgError, "GetSimilarMovies", "@MovieID", id);
 
                 if (!string.IsNullOrEmpty(msgError))
                     throw new Exception(msgError);

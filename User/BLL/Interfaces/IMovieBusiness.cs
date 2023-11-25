@@ -12,7 +12,8 @@ namespace BLL.Interfaces
         List<MovieModel> getAll();
         List<MovieModel> GetPopularMovies();
         MovieModel getbyID(int id);
-        
+        List<MovieModel> GetSimilarMovies(int id);
+
         public List<MovieModel> Search(int pageIndex, int pageSize, out long total, string name);
 
     }

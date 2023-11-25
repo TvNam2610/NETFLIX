@@ -13,6 +13,7 @@ namespace DAL.Interfaces
         MovieModel GetbyID(int id);
 
         List<MovieModel> GetPopularMovies();
+        List<MovieModel> GetSimilarMovies(int id);
         public List<MovieModel> Search(int pageIndex, int pageSize, out long total, string name);
 
     }

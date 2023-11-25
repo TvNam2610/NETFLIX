@@ -54,10 +54,7 @@ namespace BLL
             return _res.GetAll();
         }
 
-        public UserModel GetDataById(string id)
-        {
-            return _res.GetDataById(id);
-        }
+       
 
         public bool Create(UserModel model)
         {

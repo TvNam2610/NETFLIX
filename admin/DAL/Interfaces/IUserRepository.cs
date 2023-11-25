@@ -11,7 +11,6 @@ namespace DAL.Interfaces
     {
         UserModel Login(string username, string password);
         List<UserModel> GetAll();
-        UserModel GetDataById(string id);
         bool Create(UserModel model);
         bool Update(UserModel model);
         bool Delete(string id);

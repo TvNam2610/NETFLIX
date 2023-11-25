@@ -2198,7 +2198,7 @@
       "projectName": "API",
       "projectPath": "F:\\ASP.Net\\NETFLIX\\admin\\API\\API.csproj",
       "packagesPath": "C:\\Users\\admin\\.nuget\\packages\\",
-      "outputPath": "F:\\ASP.Net\\NETFLIX\\admin\\API\\obj\\",
+      "outputPath": "F:\\ASP.Net\\NETFLIX\\Admin\\API\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\admin\\AppData\\Roaming\\NuGet\\NuGet.Config",

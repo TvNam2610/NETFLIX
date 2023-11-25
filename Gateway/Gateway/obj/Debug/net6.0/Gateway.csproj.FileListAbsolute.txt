@@ -7,7 +7,6 @@ F:\ASP.Net\NETFLIX\Gateway\Gateway\obj\Debug\net6.0\Gateway.MvcApplicationPartsA
 F:\ASP.Net\NETFLIX\Gateway\Gateway\obj\Debug\net6.0\Gateway.MvcApplicationPartsAssemblyInfo.cache
 F:\ASP.Net\NETFLIX\Gateway\Gateway\bin\Debug\net6.0\appsettings.Development.json
 F:\ASP.Net\NETFLIX\Gateway\Gateway\bin\Debug\net6.0\appsettings.json
-F:\ASP.Net\NETFLIX\Gateway\Gateway\bin\Debug\net6.0\Configuaration.Development.json
 F:\ASP.Net\NETFLIX\Gateway\Gateway\bin\Debug\net6.0\Gateway.exe
 F:\ASP.Net\NETFLIX\Gateway\Gateway\bin\Debug\net6.0\Gateway.deps.json
 F:\ASP.Net\NETFLIX\Gateway\Gateway\bin\Debug\net6.0\Gateway.runtimeconfig.json
@@ -34,3 +33,6 @@ F:\ASP.Net\NETFLIX\Gateway\Gateway\obj\Debug\net6.0\refint\Gateway.dll
 F:\ASP.Net\NETFLIX\Gateway\Gateway\obj\Debug\net6.0\Gateway.pdb
 F:\ASP.Net\NETFLIX\Gateway\Gateway\obj\Debug\net6.0\Gateway.genruntimeconfig.cache
 F:\ASP.Net\NETFLIX\Gateway\Gateway\obj\Debug\net6.0\ref\Gateway.dll
+F:\ASP.Net\NETFLIX\Gateway\Gateway\bin\Debug\net6.0\configuration.Development.json
+F:\ASP.Net\NETFLIX\Gateway\Gateway\bin\Debug\net6.0\configuration.Production.json
+F:\ASP.Net\NETFLIX\Gateway\Gateway\bin\Debug\net6.0\ocelot.json

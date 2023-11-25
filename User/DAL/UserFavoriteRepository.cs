@@ -17,16 +17,16 @@ namespace DAL
         {
             _db = db;
         }
-        public List<UserFavoriteModel> GetDataByUser(string username)
+        public List<MovieModel> GetDataByUser(int userID)
         {
             string msgError = "";
             try
             {
-                var dt = _db.ExecuteSProcedureReturnDataTable(out msgError, "GetUserFavoriteByUsername",
-                     "@username", username);
+                var dt = _db.ExecuteSProcedureReturnDataTable(out msgError, "GetFavoriteMovies",
+                     "@UserID", userID);
                 if (!string.IsNullOrEmpty(msgError))
                     throw new Exception(msgError);
-                return dt.ConvertTo<UserFavoriteModel>().ToList();
+                return dt.ConvertTo<MovieModel>().ToList();
             }
             catch (Exception ex)
             {

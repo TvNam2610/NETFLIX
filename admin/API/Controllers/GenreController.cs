@@ -1,5 +1,4 @@
-﻿using BLL;
-using BLL.Interfaces;
+﻿using BLL.Interfaces;
 using DataModel;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -10,17 +9,49 @@ namespace API.Controllers
     [ApiController]
     public class GenreController : ControllerBase
     {
-        private IGenreBusiness _genre;
-        public GenreController(IGenreBusiness genre)
+        private IGenreBusiness _genreBusiness;
+        public GenreController(IGenreBusiness genreBusiness)
         {
-            _genre = genre;
+            _genreBusiness = genreBusiness;
         }
 
-        [HttpGet("get-all-with-movie")]
-        public List<GenreModel> GetPopular()
+        [HttpGet("get-all")]
+        public IActionResult GetAll()
         {
-            var dt = _genre.getAllWithMovie();
+            var dt = _genreBusiness.GetAll().Select(x => new { x.GenreID,x.Name});
+            return Ok(dt);  
+        }
+
+
+        [HttpGet("get-by-id")]
+        public GenreModel GetDataById(int id)
+        {
+            var dt = _genreBusiness.GetbyID(id);
             return dt;
+        }
+
+        [Route("create-genre")]
+        [HttpPost]
+        public GenreModel CreateItem([FromBody] GenreModel model)
+        {
+            _genreBusiness.Create(model);
+            return model;
+        }
+
+        [Route("update")]
+        [HttpPost]
+        public GenreModel UpdateItem([FromBody] GenreModel model)
+        {
+            _genreBusiness.Update(model);
+            return model;
+        }
+
+        [Route("delete")]
+        [HttpDelete]
+        public IActionResult DeleteItem(int id)
+        {
+            _genreBusiness.Delete(id);
+            return Ok(new { message = "xoas thanh cong" });
         }
     }
 }

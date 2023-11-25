@@ -8,7 +8,7 @@ namespace DataModel
 {
     public class GenreModel
     {
-        public string Genre { get; set; }
-        public List<MovieModel> list_json_Movies { get; set; } // Lấy về list json của những tập phim có trong seris
+        public int GenreID { get; set; }
+        public string Name { get; set; }
     }
 }

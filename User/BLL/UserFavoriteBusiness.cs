@@ -18,9 +18,8 @@ namespace BLL
         {
             _res = res;
         }
-        public List<UserFavoriteModel> GetDataByUser(string username)
-        {
-            return _res.GetDataByUser(username);
+        public List<MovieModel> GetFavorite(int userid) { 
+            return _res.GetDataByUser(userid);
         }
     }
 }
