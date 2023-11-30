@@ -9,6 +9,8 @@ namespace BLL.Interfaces
 {
     public interface IGenreBusiness
     {
-        List<GenreModel> getAllWithMovie();
+        List<GenreDtoWithMovie> getAllWithMovie();
+        List<GenreDtoWithEpisode> getAllWithEpisode();
+
     }
 }

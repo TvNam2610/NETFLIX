@@ -9,6 +9,7 @@ namespace DAL.Interfaces
 {
     public interface IGenreRepository
     {
-        List<GenreModel> getAllWithMovie();
+        List<GenreDtoWithMovie> getAllWithMovie();
+        List<GenreDtoWithEpisode> getAllWithEpisode();
     }
 }

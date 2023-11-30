@@ -1,4 +1,6 @@
-﻿using BLL.Interfaces;
+﻿using BLL;
+using BLL.Interfaces;
+using DataModel;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -14,11 +16,20 @@ namespace API.Controllers
             _wBusiness = wBusiness;
         }
 
-        [HttpGet("get-by-user")]
-        public IActionResult GetDataByUser(string username)
+        [Route("add-favorite")]
+        [HttpPost]
+        public UserFavoriteModel CreateItem([FromBody] UserFavoriteModel model)
         {
-            var dt = _wBusiness.GetDataByUser(username).Select(x => new { x.FavoriteID, x.Title });
-            return Ok(dt);
+            _wBusiness.Create(model);
+            return model;
+        }
+
+        [Route("delete-favorite")]
+        [HttpDelete]
+        public IActionResult DeleteItem(int userid, int movieid)
+        {
+            _wBusiness.Delete(userid, movieid);
+            return Ok(new { message = "xoas thanh cong" });
         }
     }
 }

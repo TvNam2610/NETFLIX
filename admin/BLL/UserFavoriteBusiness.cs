@@ -18,9 +18,15 @@ namespace BLL
         {
             _res = res;
         }
-        public List<UserFavoriteModel> GetDataByUser(string username)
+
+        public bool Create(UserFavoriteModel model)
         {
-            return _res.GetDataByUser(username);
+            return _res.Create(model);
+        }
+
+        public bool Delete(int userid, int movieid)
+        {
+            return _res.Delete(userid, movieid);
         }
     }
 }

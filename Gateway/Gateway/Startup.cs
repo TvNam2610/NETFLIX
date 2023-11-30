@@ -1,6 +1,10 @@
-﻿using Ocelot.DependencyInjection;
+using Ocelot.DependencyInjection;
 using Ocelot.Middleware;
 using Microsoft.OpenApi.Models;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.IdentityModel.Tokens;
+using System.Text;
+using Microsoft.AspNetCore.Builder;
 
 namespace GateWay
 {
@@ -18,6 +22,13 @@ namespace GateWay
             services.AddCors(options =>
             {
                 options.AddPolicy("AllowAll", builder => builder.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());
+                options.AddPolicy("AllowSpecificOrigin", builder =>
+                {
+                    builder.WithOrigins("http://127.0.0.1:5500") // Update with the actual origin of your client
+                        .AllowAnyMethod()
+                        .AllowAnyHeader()
+                        .AllowCredentials();
+                });
             });
 
             services.AddControllers();
@@ -26,6 +37,34 @@ namespace GateWay
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "Gateway", Version = "v1" });
+            });
+
+            // configure strongly typed settings objects
+            IConfiguration configuration = Configuration;
+            var appSettingsSection = configuration.GetSection("AppSettings");
+            services.Configure<AppSettings>(appSettingsSection);
+
+            // configure jwt authentication
+            var appSettings = appSettingsSection.Get<AppSettings>();
+
+            var key = Encoding.ASCII.GetBytes(appSettings.Secret);
+            services.AddAuthentication(x =>
+            {
+                x.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+                x.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+            })
+            .AddJwtBearer(x =>
+            {
+                x.RequireHttpsMetadata = false;
+                x.SaveToken = true;
+                x.TokenValidationParameters = new TokenValidationParameters
+                {
+                    ValidateIssuerSigningKey = true,
+                    IssuerSigningKey = new SymmetricSecurityKey(key),
+                    ValidateIssuer = false,
+                    ValidateAudience = false,
+
+                };
             });
         }
 
@@ -47,6 +86,7 @@ namespace GateWay
                 .AllowAnyMethod()
                 .AllowAnyHeader());
 
+
             app.UseHttpsRedirection();
 
             app.UseStaticFiles();
@@ -54,16 +94,25 @@ namespace GateWay
             app.UseRouting();
 
             app.UseAuthentication();
-
+             
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
+                
             });
+
+            
 
             await app.UseOcelot();
         }
+    }
+
+    public class AppSettings
+    {
+        public string Secret { get; set; }
+
     }
 
 }

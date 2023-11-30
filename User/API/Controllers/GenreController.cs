@@ -17,9 +17,16 @@ namespace API.Controllers
         }
 
         [HttpGet("get-all-with-movie")]
-        public List<GenreModel> GetPopular()
+        public List<GenreDtoWithMovie> GetAllWithMovie()
         {
             var dt = _genre.getAllWithMovie();
+            return dt;
+        }
+
+        [HttpGet("get-all-with-episode")]
+        public List<GenreDtoWithEpisode> GetAllWithEpisode()
+        {
+            var dt = _genre.getAllWithEpisode();
             return dt;
         }
     }

@@ -9,6 +9,7 @@ namespace DAL.Interfaces
 {
     public interface IUserFavoriteRepository
     {
-        List<UserFavoriteModel> GetDataByUser(string username);
+        bool Create(UserFavoriteModel model);
+        bool Delete(int userid,int movieid);
     }
 }

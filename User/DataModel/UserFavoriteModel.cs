@@ -8,6 +8,7 @@ namespace DataModel
 {
     public class UserFavoriteModel
     {
+        public int UserID { get; set; }
         public int MovieID { get; set; }
     }
 }

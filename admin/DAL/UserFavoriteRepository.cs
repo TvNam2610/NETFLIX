@@ -17,16 +17,42 @@ namespace DAL
         {
             _db = db;
         }
-        public List<UserFavoriteModel> GetDataByUser(string username)
+        public bool Create(UserFavoriteModel model)
         {
             string msgError = "";
             try
             {
-                var dt = _db.ExecuteSProcedureReturnDataTable(out msgError, "GetUserFavoriteByUsername",
-                     "@username", username);
-                if (!string.IsNullOrEmpty(msgError))
-                    throw new Exception(msgError);
-                return dt.ConvertTo<UserFavoriteModel>().ToList();
+                var result = _db.ExecuteScalarSProcedureWithTransaction(
+                    out msgError,
+                    "AddFavoriteMovies",
+                "@userID", model.UserID,
+                "@movieID", model.MovieID);
+                if ((result != null && !string.IsNullOrEmpty(result.ToString())) || !string.IsNullOrEmpty(msgError))
+                {
+                    throw new Exception(Convert.ToString(result) + msgError);
+                }
+                return true;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        public bool Delete(int userid, int movieid)
+        {
+            string msgError = "";
+            try
+            {
+                var result = _db.ExecuteScalarSProcedureWithTransaction(
+                    out msgError,
+                    "DeleteFavoriteMovies", "@userID", userid, "@movieID",movieid);
+
+                if ((result != null && !string.IsNullOrEmpty(result.ToString())) || !string.IsNullOrEmpty(msgError))
+                {
+                    throw new Exception(Convert.ToString(result) + msgError);
+                }
+                return true;
             }
             catch (Exception ex)
             {

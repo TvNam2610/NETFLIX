@@ -16,9 +16,13 @@ namespace BLL
         {
             _res = res;
         }
-        public List<GenreModel> getAllWithMovie()
+        public List<GenreDtoWithMovie> getAllWithMovie()
         {
             return _res.getAllWithMovie();
+        }
+        public List<GenreDtoWithEpisode> getAllWithEpisode()
+        {
+            return _res.getAllWithEpisode();
         }
     }
 }

@@ -16,7 +16,7 @@ namespace DAL
         {
             _db = db;
         }
-        public List<GenreModel> getAllWithMovie()
+        public List<GenreDtoWithMovie> getAllWithMovie()
         {
             string msgError = "";
             try
@@ -25,7 +25,23 @@ namespace DAL
 
                 if (!string.IsNullOrEmpty(msgError))
                     throw new Exception(msgError);
-                return dt.ConvertTo<GenreModel>().ToList();
+                return dt.ConvertTo<GenreDtoWithMovie>().ToList();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+        public List<GenreDtoWithEpisode> getAllWithEpisode()
+        {
+            string msgError = "";
+            try
+            {
+                var dt = _db.ExecuteSProcedureReturnDataTable(out msgError, "sp_get_all_genres_with_episodes");
+
+                if (!string.IsNullOrEmpty(msgError))
+                    throw new Exception(msgError);
+                return dt.ConvertTo<GenreDtoWithEpisode>().ToList();
             }
             catch (Exception ex)
             {

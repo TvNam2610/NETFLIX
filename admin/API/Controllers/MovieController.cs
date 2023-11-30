@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace API.Controllers
 {
-    [Route("api-admin/[controller]")]
+    [Route("api/[controller]")]
     [ApiController]
     public class MovieController : ControllerBase
     {
@@ -22,12 +22,6 @@ namespace API.Controllers
             return dt;
         }
 
-        [HttpGet("get-all")]
-        public List<MovieModel> GetAll()
-        {
-            var dt = _movieBusiness.getAll();
-            return dt;
-        }
 
         [Route("create-movie")]
         [HttpPost]
